@@ -1,0 +1,61 @@
+<form>
+    <div class="form-row">
+      <div class="col form-group form-inline" *ngIf="false">
+          <label>ID</label>
+       <input type="text" name="id" readonly class="form-control" [(ngModel)]="id" placeholder="id" >
+      </div>
+      <div class="col form-group form-inline">
+        <label>name</label>
+        <input type="text" name="name" class="form-control" [(ngModel)]="name" placeholder="name">
+      </div>
+      <div class="col form-group form-inline">
+        <label>description</label>
+        <input type="text" name="description" class="form-control" [(ngModel)]="description" placeholder="description">
+      </div>
+      <div class="col form-group form-inline">
+        <label >cronTime</label>
+  <input type="text" name="cronTime" class="form-control" [(ngModel)]="cronTime" placeholder="cronTime">
+      </div>
+      <div class="col form-group form-inline">
+        <label>sourceApi</label>
+        <select class="form-control" name="sourceApi" [(ngModel)]="sourceApi">
+            <option hidden disabled selected value="">Выберите api</option>
+        <option hidden>{{sourceApi}}</option>
+        <option>Corona-19</option>
+        <option>Actors</option>
+        <option>Hearthstone</option>
+        </select>
+      </div>
+      <div class="col form-group form-inline" *ngIf="sourceApi=='Corona-19'">
+        <label>ApiParams</label>
+        <input class="form-control" name="apiParams" [(ngModel)]="apiParams"/>
+      </div>
+      <div class="col form-group form-inline" *ngIf="sourceApi=='Actors'">
+        <label>ApiParams</label>
+        <select class="form-control" name="apiParams" [(ngModel)]="apiParams">
+        <option hidden>{{apiParams}}</option>
+        <option>get-title-news</option>
+        <option>get-all-news</option>
+        </select>
+      </div>
+      <div class="col form-group form-inline" *ngIf="sourceApi=='Hearthstone'">
+        <label>ApiParams</label>
+        <select class="form-control" name="apiParams" [(ngModel)]="apiParams">
+        <option hidden>{{apiParams}}</option>
+        <option>Basic-Cards</option>
+        <option>mage</option>
+        <option>hunter</option>
+        <option>paladin</option>
+        <option>priest</option>
+        <option>warrior</option>
+        <option>druid</option> 
+        <option>rogue</option> 
+        <option>shaman</option> 
+        <option>warlock</option> 
+        </select>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary" (click)="update()">Update</button>
+      </div>
+    </div>
+  </form>

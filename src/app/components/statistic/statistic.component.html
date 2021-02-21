@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-table [dataSource]="data">
+    
+        <ng-container matColumnDef="userId">
+            <mat-header-cell *matHeaderCellDef> userId </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.userId}} </mat-cell>
+        </ng-container>
+        
+    
+        <ng-container matColumnDef="userEmail">
+            <mat-header-cell *matHeaderCellDef > userEmail </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.userEmail}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="countTask">
+            <mat-header-cell *matHeaderCellDef > countTask </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.countTask}} </mat-cell>
+        </ng-container>
+      
+        <mat-header-row *matHeaderRowDef ="columns"></mat-header-row>
+        <mat-row *matRowDef="let row;columns:columns;"></mat-row>
+    </mat-table>
+    </mat-card>

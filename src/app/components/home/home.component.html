@@ -1,0 +1,44 @@
+
+<form [formGroup]="loginForm" class="col-lg-6 offset-lg-3" (ngSubmit)="onFormSubmit()">
+    <div class="form-group">
+    <label for="Name">Name</label>
+    <input type="text" formControlName="Name" class="form-control" [ngClass]="{ 'is-invalid': submitted && fval.Name.errors }" placeholder="Enter Name here"/>
+    <div *ngIf="submitted && fval.Name.errors" class="invalid-feedback">
+    <div *ngIf="fval.Name.errors.required">Name is required</div>
+    </div>
+    </div>
+    <div class="form-group">
+    <label for="Description">Description</label>
+    <textarea type="text" formControlName="Description" class="form-control"  [ngClass]="{ 'is-invalid': submitted && fval.Description.errors }" placeholder="Enter Description here"></textarea>
+    <div *ngIf="submitted && fval.Description.errors" class="invalid-feedback">
+    <div *ngIf="fval.Description.errors.required">Description is required</div>
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="CronTime">CronTime(min)</label>
+        <input type="text" pattern="[0-9]+" formControlName="CronTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && fval.CronTime.errors }" placeholder="Enter Description here"/>
+        <div *ngIf="submitted && fval.CronTime.errors" class="invalid-feedback">
+        <div *ngIf="fval.CronTime.errors.required">CronTime is required</div>
+        <div *ngIf="fval.CronTime.errors.maxlength">Max(Five symbols)</div>
+        <div *ngIf="fval.CronTime.errors.pattern">Numbers only</div>
+        </div>
+     </div>
+    <div class="form-group">
+        <label for="Api">Api</label>
+        <select class="form-control" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+            <option hidden disabled selected value="">Выберите категорию</option>
+            <option *ngFor="let c of countries">{{c}}</option>
+          </select>
+    </div>
+    <app-dynamic-form (newItemEvent)="getfromChild($event)" [apiType]="name"></app-dynamic-form>
+    <div class="form-group">
+        <label for="Date">Date</label>
+    <input class="form-control" type="datetime-local" [value]="date" (change)="date=$event.target.value"/>
+    </div>
+    <div class="form-group">
+    <button [disabled]="loading" type="submit" class="btn btn-primary">
+    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+    Save
+    </button>
+    </div>
+    </form>

@@ -1,0 +1,37 @@
+
+<div class="form-group">
+<form [formGroup]="myFormGroup">
+    <div *ngFor="let form_elem of form_template">
+    <div [ngSwitch]="form_elem.type" *ngIf="apiType==form_elem.label">
+      <div *ngSwitchCase="'select'">
+          <label>{{form_elem.label}}</label>
+        <select (change)="onChange($event.target.value)" [(ngModel)]="selectedOptions" formControlName="{{form_elem.label}}"  class="form-control" name="selected">
+         <option hidden selected value=""> Выберите категорию</option>
+          <option *ngFor="let opt of form_elem.options" >
+            {{opt}}
+          </option>
+        </select>
+      </div>
+    </div>  
+    </div>
+  </form>
+  <div *ngIf="apiType=='Corona-19'">
+  <label>Country(Name) or totals)</label> 
+  <input class="col" name="countr"  (focusout)="onSearch($event)" [(ngModel)]="countr" />
+  </div>
+  <div *ngIf="selectedOptions=='Class-Cards' && apiType=='Hearthstone'">
+    <label>Classes</label>
+    <select [(ngModel)]="clasess" class="form-control" (change)="onChange($event.target.value)">
+      <option hidden disabled selected value="">Выберите класс</option>
+    <option>mage</option>
+    <option>hunter</option>
+    <option>paladin</option>
+    <option>priest</option>
+    <option>warrior</option>
+    <option>druid</option> 
+    <option>rogue</option> 
+    <option>shaman</option> 
+    <option>warlock</option> 
+    </select>
+  </div>
+  </div>
