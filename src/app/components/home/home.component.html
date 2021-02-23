@@ -14,15 +14,7 @@
     <div *ngIf="fval.Description.errors.required">Description is required</div>
     </div>
     </div>
-    <div class="form-group">
-        <label for="CronTime">CronTime(min)</label>
-        <input type="text" pattern="[0-9]+" formControlName="CronTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && fval.CronTime.errors }" placeholder="Enter Description here"/>
-        <div *ngIf="submitted && fval.CronTime.errors" class="invalid-feedback">
-        <div *ngIf="fval.CronTime.errors.required">CronTime is required</div>
-        <div *ngIf="fval.CronTime.errors.maxlength">Max(Five symbols)</div>
-        <div *ngIf="fval.CronTime.errors.pattern">Numbers only</div>
-        </div>
-     </div>
+     <app-cron-component (newItemEvent)="getfromCron($event)"></app-cron-component>
     <div class="form-group">
         <label for="Api">Api</label>
         <select class="form-control" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">

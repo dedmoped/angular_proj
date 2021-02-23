@@ -23,6 +23,8 @@ import{MatTableModule} from '@angular/material/table'
 import{MatIconModule} from '@angular/material/icon'
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 import { StatisticComponent } from './components/statistic/statistic.component';
+import { CronComponentComponent } from './components/cron-component/cron-component.component';
+import { CronEditorModule } from 'ngx-cron-editor';
 export function tokenGetter(){
   return localStorage.getItem(ACCESS_TOKEN_KEY);
 }
@@ -36,7 +38,8 @@ export function tokenGetter(){
     UpdateComponent,
     DynamicFormComponent,
     OrdersComponent,
-    StatisticComponent
+    StatisticComponent,
+    CronComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ export function tokenGetter(){
     MatTableModule,
     ReactiveFormsModule,
     DlDateTimeDateModule,
+    CronEditorModule,
     DlDateTimePickerModule,
     ToastrModule.forRoot(),
     JwtModule.forRoot({

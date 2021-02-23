@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Data } from 'src/app/models/Data';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DataService } from 'src/app/services/data/data.service';
+import { CronComponentComponent } from '../cron-component/cron-component.component';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
   returnUrl: string;
   countries = ['Corona-19','Actors','Hearthstone'];
   name:string="";
+  
   constructor(
   private formBuilder: FormBuilder,
   private route: ActivatedRoute,
@@ -51,7 +53,6 @@ export class HomeComponent implements OnInit {
   }
   this.data.name=this.loginForm.controls.Name.value;
   this.data.description=this.loginForm.controls.Description.value;
-  this.data.cronTime=this.loginForm.controls.CronTime.value;
   this.data.sourceApi=this.name;
   this.data.lastGetDataTime=this.date;
   this.data.startTime=this.date;
@@ -63,7 +64,7 @@ export class HomeComponent implements OnInit {
   this.loading = false;
   },
   error => {
-  this.toastr.error(error.error.message, 'Error');
+  this.toastr.error('Error');
   this.loading = false;
   });
 }
@@ -71,5 +72,8 @@ getfromChild(info:string){
   console.log(info);
   this.data.apiParams=info;
 }
-
+getfromCron(info:string){
+  console.log(info);
+  this.data.cronTime=info;
+}
 }

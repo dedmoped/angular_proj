@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { OrdersComponent } from './components/orders/orders.component';
 import { StatisticComponent } from './components/statistic/statistic.component';
+import { CronComponentComponent } from './components/cron-component/cron-component.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegistrationComponent
+  },
+  {
+    path: 'cron',
+    component: CronComponentComponent
   },
   {path:'orders',component:OrdersComponent,canActivate:[AuthGuardService]},
   {path:'statistic',component:StatisticComponent,canActivate:[AuthGuardService]},

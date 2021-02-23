@@ -31,12 +31,12 @@
 
     <ng-container matColumnDef="cronTime">
         <mat-header-cell *matHeaderCellDef > cronTime </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.cronTime}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.sourceApi}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="sourceApi">
         <mat-header-cell *matHeaderCellDef > sourceApi</mat-header-cell> 
-        <mat-cell *matCellDef="let element"> {{element.sourceApi}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.cronTime}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="apiParams">
@@ -50,7 +50,7 @@
             <button mat-fab color="warn" (click)="deleteTask(element.id)" aria-label="Example icon button with a delete icon">
                 <mat-icon>delete</mat-icon>
               </button>
-              <button mat-fab color="primary" (click)="updateRow(element.id,element.name,element.description,element.cronTime,element.sourceApi)" aria-label="Example icon button with a delete icon">
+              <button mat-fab color="primary" (click)="updateRow(element.id,element.name,element.description,element.sourceApi)" aria-label="Example icon button with a delete icon">
                 <mat-icon>edit</mat-icon>
               </button>
          </mat-cell>   

@@ -1,0 +1,10 @@
+
+<p>CronTime</p>
+    <div class="form-group">
+        <cron-editor #cronEditorInfo  [cron]="cronExpression" [(ngModel)]="cronExpression"  (ngModelChange)="onChange()" [(options)]="cronOptions"></cron-editor>
+        <hr />
+        <p>The resulting Cron expression: </p>
+        <div class="form-group mx-sm-3 mb-2">
+          <input type="text" readonly class="form-control" [(ngModel)]="cronExpression">
+        </div>
+    </div>
